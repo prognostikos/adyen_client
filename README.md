@@ -1,7 +1,5 @@
 # A simple client that talks to the Adyen API
 
-[Adyen](https://www.adyen.com) is a world wide payments provider.
-
 > Does not try to be smart, stays close to the documentation while adhering to ruby conventions.
 
 ## Setup & Configuration
@@ -107,11 +105,11 @@ Similar, if you want nothing else than the bare `HTTParty::Response`, initialise
 ## Contributing
 
 I am very happy to receive pull requests or bug reports for problems with the library.
-Please make sure you are only reporting an actual issue with the library itself, I cannot help with your payment flow or advise you on anything related on using the Adyen API.
+Please make sure you are only reporting an actual issue with the library itself, I cannot help with your payment flow or advise you on anything related to the Adyen API.
 
 ## Disclaimer
 
-I am associated with Adyen in any way, this piece of code can be used as-is. No warranty will be given.  
+I am not associated with Adyen in any way.
 If you have problems with your adyen account or your payment flow, please contact the very helpful Adyen support using `support ät adyen.com`.
 
 Please make yourself comfortable [with the Adyen documentation](https://docs.adyen.com/) on how you want to setup your payment flow.
