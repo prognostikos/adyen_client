@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws_574277%40Company.OpenSource:Q%29%256IpQdZiqU5tb3A1cw47e%3E%25@pal-test.adyen.com/pal/servlet/Payment/v12/authorise
+    body:
+      encoding: UTF-8
+      string: '{"reference":"5b15674e-bd54-4a4f-a803-744cd49c0c52","amount":{"value":456,"currency":"EUR"},"merchantAccount":"OpenSourceCOM","shopperReference":"john","selectedRecurringDetailReference":"LATEST","selectedBrand":"","recurring":{"contract":"RECURRING"},"shopperInteraction":"ContAuth"}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Dec 2015 10:22:40 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=119917E5E978C6265864C606741766BC.test3e; Path=/pal/; Secure; HttpOnly
+      Pspreference:
+      - '8514508661603766'
+      Content-Length:
+      - '80'
+      Content-Type:
+      - application/json;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"pspReference":"8514508661603766","resultCode":"Authorised","authCode":"41057"}'
+    http_version: 
+  recorded_at: Wed, 23 Dec 2015 10:22:39 GMT
+recorded_with: VCR 3.0.0

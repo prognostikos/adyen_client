@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws_574277%40Company.OpenSource:Q%29%256IpQdZiqU5tb3A1cw47e%3E%25@pal-test.adyen.com/pal/servlet/Payment/v12/authorise
+    body:
+      encoding: UTF-8
+      string: '{"reference":"a69a9de5-f97e-423c-804d-eeabf663b6ac","amount":{"value":0,"currency":"EUR"},"additionalAmount":{"value":123,"currency":"EUR"},"merchantAccount":"OpenSourceCOM","additionalData":{"card.encrypted.json":"adyenjs_0_1_15$P72PfRV1kT0p/yvtEuOrDTr6bCgEK2DJFNLEeW9B0cW9XRPzW9kUv9zL+oZAKTQ5/mZ+DmV26+YIlS7u2OkMPFxx7r/0HBJS8r35hA9F9UgnjbU/EvUKByvii4YEQuksVvq8o4tDv/Cu/WlrVKg2SkE0Do4Kz5QeNvoDsPlR6D3241fsae1DrjfXV/JRKfr8XfhfnS5SGsNpVcWuBNVzBsgJqblmuPEX7QdnoJiRmLXCVJch0iUAN+dlpQYYBiKv2sqmblIzI/NAVxsl/VCDSWQTUIbLguUzdFUkdA+ilME3LXnK5A44iOrx0sLX0deZNsRv11dDlKqGl4ig7RKPtw==$vYi0R3R+BJchqcApxd9LioLYWT199urvgAhs9wWGweCyLs+pgmuwoU0ozK3gV0jY5MmaNWW+WL2aZvw6qFLZeSwNL6jK6nLCoaYYqQ3Sp+i1hv9Yjbk40NQxq6Riq3rD+kYPDLI6hIp0rsR9paGMmaKlyW9K8/1l5t1BmeARsXbMz7gpw0qd+cqPkLVdxozCETvTudRpWxBPJHw6AT1ofZVo1UVyKAjdsdzOnT8zOX6lF16PnRmVw8ItVz4v1DhO7Jo2IhUWoI1q3mHvtYdLloCPI3ArZnLXNNjf95PSIYe7QNlPcVAzoj1WNkrvcVpji922o25eZW16N93xkOHJU7efkeXwOJj72S0DWIhcwt5DAauBXgbc/YMlR0AOdzQiy8TsCmNb8Q=="}}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Dec 2015 10:00:12 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=DFE851B3A07332B3989750D53ACA1DEF.test104e; Path=/pal/; Secure;
+        HttpOnly
+      Pspreference:
+      - '7914508648124868'
+      Content-Length:
+      - '89'
+      Content-Type:
+      - application/json;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"pspReference":"7914508648124868","refusalReason":"CVC Declined","resultCode":"Refused"}'
+    http_version: 
+  recorded_at: Wed, 23 Dec 2015 10:00:11 GMT
+recorded_with: VCR 3.0.0

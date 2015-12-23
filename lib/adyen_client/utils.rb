@@ -1,16 +1,16 @@
 class AdyenClient
 
   module Utils
-    def massage_response(value)
+    def massage_response(value, parent = nil)
       case value
       when Array
-        value.map(&method(:massage_response))
+        value.map { |v| massage_response(v, value) }
       when Hash
-        if value.count == 1
+        if parent.is_a?(Array) && value.count == 1
           _, v = value.first
-          massage_response(v)
+          massage_response(v, value)
         else
-          Hash[value.map { |k, v| [snake_caseify(k), massage_response(v)] }]
+          Hash[value.map { |k, v| [snake_caseify(k), massage_response(v, value)] }]
         end
       else
         value

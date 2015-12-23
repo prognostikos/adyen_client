@@ -31,7 +31,7 @@ class AdyenClient
     @response_class = response_class
   end
 
-  def authorise_recurring_payment(amount:, reference:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency, shopper: {})
+  def authorise_recurring_payment(amount:, reference:, recurring_reference: "LATEST", shopper:, merchant_account: @merchant_account, currency: configuration.default_currency)
     postJSON("/Payment/v12/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },
@@ -122,7 +122,7 @@ class AdyenClient
 
   def postJSON(path, data)
     response = self.class.post(path, body: data.to_json)
-    response_class ? response_class.new(response) : response
+    @response_class ? @response_class.parse(response) : response
   end
 
   def configuration

@@ -1,11 +1,15 @@
 class AdyenClient
 
   class Response
-    attr_reader :code
+    def self.parse(http_response)
+      new(http_response.code, Utils.massage_response(http_response.parsed_response))
+    end
 
-    def initialize(http_response)
-      @code = http_response.code
-      @data = Utils.massage_response(http_response.parsed_response)
+    attr_reader :code, :data
+    alias_method :to_hash, :data
+
+    def initialize(code, data)
+      @code, @data = code, data
     end
 
     def success?
@@ -17,16 +21,12 @@ class AdyenClient
     end
     alias_method :authorized?, :authorised? # for our friends abroad
 
-    def to_hash
-      @data
+    def respond_to_missing?(name, include_private = false)
+      @data.has_key?(name.to_s) || super
     end
 
-    def respond_to_missing?(name)
-      @data.has_key?(name.to_s)
-    end
-
-    def method_missing(name)
-      @data.fetch(name.to_s) { super }
+    def method_missing(name, *args, &block)
+      @data.fetch(name.to_s) { super(name, *args, &block) }
     end
   end
 

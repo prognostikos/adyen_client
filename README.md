@@ -90,14 +90,14 @@ If you want a more sophisticated response class, you can easily hook up your own
 The only method you need to provide is `::new`. It will receive one argument, the [`HTTParty::Response`](http://www.rubydoc.info/github/jnunemaker/httparty/HTTParty/Response) for the given request.
 
 ```ruby
-class AdyenResponse
-  def initialize(http_response)
+class MyAdyenResponse
+  def self.parse(http_response)
     # ... your fancy code
   end
 end
 ```
 
-Hook it up by initialising the client like this: `AdyenClient.new(response_class: AdyenResponse)`.
+Hook it up by initialising the client like this: `AdyenClient.new(response_class: MyAdyenResponse)`.
 
 Similar, if you want nothing else than the bare `HTTParty::Response`, initialise the client with: `response_class: nil`.
 

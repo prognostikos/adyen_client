@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws_574277%40Company.OpenSource:Q%29%256IpQdZiqU5tb3A1cw47e%3E%25@pal-test.adyen.com/pal/servlet/Recurring/v12/listRecurringDetails
+    body:
+      encoding: UTF-8
+      string: '{"shopperReference":"john","recurring":{"contract":"RECURRING"},"merchantAccount":"OpenSourceCOM"}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Dec 2015 10:17:33 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=F38172B8FBF3A5B22801DF010B844A0C.test103e; Path=/pal/; Secure;
+        HttpOnly
+      Pspreference:
+      - '8814508658537453'
+      Content-Length:
+      - '528'
+      Content-Type:
+      - application/json;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"creationDate":"2015-12-23T11:15:18+01:00","details":[{"RecurringDetail":{"additionalData":{"cardBin":"510008"},"alias":"C189971601011356","aliasType":"Default","card":{"expiryMonth":"8","expiryYear":"2018","holderName":"John
+        Doe","number":"3332"},"contractTypes":["RECURRING"],"creationDate":"2015-12-23T11:15:18+01:00","firstPspReference":"7914508657186147","paymentMethodVariant":"bijcard","recurringDetailReference":"8314508657181050","variant":"bijcard"}}],"lastKnownShopperEmail":"john@doe.com","shopperReference":"john"}'
+    http_version: 
+  recorded_at: Wed, 23 Dec 2015 10:17:32 GMT
+recorded_with: VCR 3.0.0

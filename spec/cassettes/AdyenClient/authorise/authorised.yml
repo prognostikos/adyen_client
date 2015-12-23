@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ws_574277%40Company.OpenSource:Q%29%256IpQdZiqU5tb3A1cw47e%3E%25@pal-test.adyen.com/pal/servlet/Payment/v12/authorise
+    body:
+      encoding: UTF-8
+      string: '{"reference":"6d01bcb7-31ff-4ed8-a62f-b710b0f19871","amount":{"value":123,"currency":"EUR"},"merchantAccount":"OpenSourceCOM","additionalData":{"card.encrypted.json":"adyenjs_0_1_15$IQ86J/plzJhF5JJG7ShX6fndrfc4N4Xq+8exBzWvAoBuiFSUz4oKoDXj0UMtXPLNuvQJfXYmDBqTKy6ZtYsM76PFYAe4dGu1e6JDm+2RWX4VKLDQQ3cDEyRNlPjb7ac4X9HUnBuFoYmyITYLe8RlKbOqLCKLihG3AY6j6YbDjpH2AUAYYdz5UVECgJUcyEnCEI0Tq1s82CqqRs0mDe39SLkL9LBWLMydtQTrs5ovTrA5Bl0hb93urYe6ExUZkzccK/cjWaoKU8zKMeCTxWGMDM2nzbHOme/Cn6nMoRssORtETJC5YroDhviL/FbVGFl155w+e41PjSNmj/sImQBJgg==$m5ac+At3NQRJz6WCm1aSGi3IfWXibHpu88+ZHG5Qqg3UiEMh5/Ix7Qw1nd9Eahuac/rRAgu5SjH+elRfi44uZNEcAPjRmObJs0T/n3G8ihg9oWmDkczntr3H4Ge11V+zqZrKxXED/eZSfsfyAlw5NptefqPwnmA6pYFQc+1/zVtyXwgYhkNIhocogdivv0IIdmRUUQ2cLXmk+VWrwBjHN9MFCzddflv9YzWugO9V0BhMhYDQKOcj3PEe0b8BDWB443n302rHGUQDjRczkmUm/iElQYXWIQ7FkidgIfeRMg82mUx+bLCNExq5abHrC1GMeETR10zQRR5dzubeLu18i140zVxZydU="}}'
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Dec 2015 09:54:29 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - JSESSIONID=08ABFC7159986671E6127B9BA7ADB97C.test104e; Path=/pal/; Secure;
+        HttpOnly
+      Pspreference:
+      - '7914508644691928'
+      Content-Length:
+      - '79'
+      Content-Type:
+      - application/json;charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"pspReference":"7914508644691928","resultCode":"Authorised","authCode":"4239"}'
+    http_version: 
+  recorded_at: Wed, 23 Dec 2015 09:54:29 GMT
+recorded_with: VCR 3.0.0
