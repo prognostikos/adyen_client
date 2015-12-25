@@ -1,5 +1,7 @@
 # A simple client that talks to the Adyen API
 
+[![Inline docs](http://inch-ci.org/github/Overbryd/adyen_client.svg?branch=master)](http://inch-ci.org/github/Overbryd/adyen_client)
+
 > Does not try to be smart, stays close to the documentation while adhering to Ruby conventions.
 
 ## Setup & Configuration
@@ -30,6 +32,10 @@ AdyenClient.configure(environment: :test, username: "ws_123456@Company.FooBar", 
 
 # That comes in handy to configure the client from a YAML file
 AdyenClient.configure(YAML.load_file(Rails.root.join("config", "adyen.yml"))[Rails.env.to_s])
+
+# You can override all default options for each instance of a client
+client = AdyenClient.new(merchant_account: "FooBarSubMerchant123")
+eur_client = AdyenClient.new(currency: "EUR")
 ```
 
 ## Examples
