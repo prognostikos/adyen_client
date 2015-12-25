@@ -3,9 +3,9 @@ require "adyen_client/utils"
 require "adyen_client/response"
 require "adyen_client/configuration"
 
-# Main class for interacting with the Adyen API
+# Public: Main class for interacting with the Adyen API
 #
-# Use an instance to configure and talk to the API.
+# Use an instance to configure for the situation and talk to the API.
 class AdyenClient
   include HTTParty
 
