@@ -79,12 +79,12 @@ class AdyenClient
   # :shopper_reference   - The user reference id from your side.
   # :amount              - The amount to charge in cents.
   # :reference           - Your reference id for this transaction.
-  # :recurring_reference - Use when referencing a specific payment method stored for the user, defaults to "LATEST".
+  # :recurring_reference - Use when referencing a specific payment method stored for the user. (default: "LATEST")
   # :merchant_account    - Use a specific merchant account for this transaction. (default: set by the instance or configuration default merchant account)
   # :currency            - Use a specific 3-letter currency code. (default: set by the instance or configuration default currency)
   #
   # Returns an AdyenClient::Response or your specific response implementation.
-  def authorise_recurring_payment(shopper_reference:, amount:, shopper:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency)
+  def authorise_recurring_payment(reference:, shopper_reference:, amount:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency)
     postJSON("/Payment/v12/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },

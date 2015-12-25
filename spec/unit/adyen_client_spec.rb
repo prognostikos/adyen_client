@@ -113,7 +113,7 @@ describe AdyenClient, vcr: { per_group: true } do
 
   describe "#authorise_recurring_payment" do
     describe "authorised" do
-      let(:response) { client.authorise_recurring_payment(amount: 456, reference: SecureRandom.uuid, shopper: shopper) }
+      let(:response) { client.authorise_recurring_payment(amount: 456, reference: SecureRandom.uuid, shopper_reference: shopper[:reference]) }
       before { assert_no_errors_in_response }
 
       it "should return an authorised response" do
