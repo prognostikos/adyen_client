@@ -1,6 +1,6 @@
 # A simple client that talks to the Adyen API
 
-> Does not try to be smart, stays close to the documentation while adhering to ruby conventions.
+> Does not try to be smart, stays close to the documentation while adhering to Ruby conventions.
 
 ## Setup & Configuration
 
