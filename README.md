@@ -33,7 +33,7 @@ AdyenClient.configure(environment: :test, username: "ws_123456@Company.FooBar", 
 # That comes in handy to configure the client from a YAML file
 AdyenClient.configure(YAML.load_file(Rails.root.join("config", "adyen.yml"))[Rails.env.to_s])
 
-# You can override all default options for each instance of a client
+# You can override all default_* options for each instance of a client
 client = AdyenClient.new(merchant_account: "FooBarSubMerchant123")
 eur_client = AdyenClient.new(currency: "EUR")
 ```
@@ -93,7 +93,7 @@ Also the default `AdyenClient::Response` class basically just wraps the JSON res
 The only work it does is converting `camelCase` keys to `sneak_case`, removing unnecessary object nestings and providing you with a convenience `authorised?` method. 
 
 If you want a more sophisticated response class, you can easily hook up your own.
-The only method you need to provide is `::new`. It will receive one argument, the [`HTTParty::Response`](http://www.rubydoc.info/github/jnunemaker/httparty/HTTParty/Response) for the given request.
+The only method you need to provide is `::parse`. It will receive one argument, the [`HTTParty::Response`](http://www.rubydoc.info/github/jnunemaker/httparty/HTTParty/Response) for the given request.
 
 ```ruby
 class MyAdyenResponse
