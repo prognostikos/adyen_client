@@ -1,7 +1,4 @@
 require "httparty"
-require "adyen_client/utils"
-require "adyen_client/response"
-require "adyen_client/configuration"
 
 # Public: Main class for interacting with the Adyen API
 #
@@ -254,3 +251,6 @@ class AdyenClient
 
 end
 
+require "adyen_client/utils"
+require "adyen_client/response"
+require "adyen_client/configuration"
