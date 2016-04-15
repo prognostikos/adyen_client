@@ -82,14 +82,17 @@ class AdyenClient
   # :recurring_reference - Use when referencing a specific payment method stored for the user. (default: "LATEST")
   # :merchant_account    - Use a specific merchant account for this transaction. (default: set by the instance or configuration default merchant account)
   # :currency            - Use a specific 3-letter currency code. (default: set by the instance or configuration default currency)
+  # :statement           - Supply a statement that should be shown on the customers credit card bill. (default: "")
+  #                        Note however that most card issues allow for not more than 22 characters.
   #
   # Returns an AdyenClient::Response or your specific response implementation.
-  def authorise_recurring_payment(reference:, shopper_reference:, amount:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency)
+  def authorise_recurring_payment(reference:, shopper_reference:, amount:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency, statement: "")
     postJSON("/Payment/v12/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },
       merchantAccount: merchant_account,
       shopperReference: shopper_reference,
+      shopperStatement: statement,
       selectedRecurringDetailReference: recurring_reference,
       selectedBrand: "",
       recurring: { contract: "RECURRING" },
@@ -151,17 +154,23 @@ class AdyenClient
   # :merchant_account - Use a specific merchant account for this transaction. (default: set by the instance or configuration default merchant account)
   # :currency         - Use a specific 3-letter currency code. (default: set by the instance or configuration default currency)
   # :shopper          - The hash describing the shopper for this transaction, optional but recommended (default: {}):
-  #                    :email     - The shoppers email address (optional but recommended).
-  #                    :ip        - The shoppers last known ip address (optional but recommended).
-  #                    :reference - Your reference id for this shopper/user (optional).
+  #                     :email     - The shoppers email address (optional but recommended).
+  #                     :ip        - The shoppers last known ip address (optional but recommended).
+  #                     :reference - Your reference id for this shopper/user (optional).
+  # :statement        - Supply a statement that should be shown on the customers credit card bill. (default: "")
+  #                     Note however that most card issues allow for not more than 22 characters.
   #
   # Returns an AdyenClient::Response or your specific response implementation.
-  def authorise(encrypted_card:, amount:, reference:, merchant_account: @merchant_account, currency: @currency, shopper: {})
+  def authorise(encrypted_card:, amount:, reference:, merchant_account: @merchant_account, currency: @currency, shopper: {}, statement: "")
     postJSON("/Payment/v12/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },
       merchantAccount: merchant_account,
-      additionalData: { "card.encrypted.json": encrypted_card }
+      additionalData: { "card.encrypted.json": encrypted_card },
+      shopperEmail: shopper[:email],
+      shopperIP: shopper[:ip],
+      shopperReference: shopper[:reference],
+      shopperStatement: statement
     )
   end
   alias_method :authorize, :authorise
@@ -176,18 +185,24 @@ class AdyenClient
   # :merchant_account - Use a specific merchant account for this transaction (default: set by the instance or configuration default merchant account).
   # :currency         - Use a specific 3-letter currency code (default: set by the instance or configuration default currency).
   # :shopper          - The hash describing the shopper for this transaction, optional but recommended (default: {}):
-  #                    :email     - The shoppers email address (optional but recommended).
-  #                    :ip        - The shoppers last known ip address (optional but recommended).
-  #                    :reference - Your reference id for this shopper/user (optional).
+  #                     :email     - The shoppers email address (optional but recommended).
+  #                     :ip        - The shoppers last known ip address (optional but recommended).
+  #                     :reference - Your reference id for this shopper/user (optional).
+  # :statement        - Supply a statement that should be shown on the customers credit card bill. (default: "")
+  #                     Note however that most card issues allow for not more than 22 characters.
   #
   # Returns an AdyenClient::Response or your specific response implementation.
-  def verify(encrypted_card:, reference:, amount: 0, merchant_account: @merchant_account, currency: @currency, shopper: {})
+  def verify(encrypted_card:, reference:, amount: 0, merchant_account: @merchant_account, currency: @currency, shopper: {}, statement: "")
     postJSON("/Payment/v12/authorise",
       reference: reference,
       amount: { value: 0, currency: currency },
       additionalAmount: { value: amount, currency: currency },
       merchantAccount: merchant_account,
-      additionalData: { "card.encrypted.json": encrypted_card }
+      additionalData: { "card.encrypted.json": encrypted_card },
+      shopperEmail: shopper[:email],
+      shopperIP: shopper[:ip],
+      shopperReference: shopper[:reference],
+      shopperStatement: statement
     )
   end
 

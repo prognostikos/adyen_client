@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = "adyen_client"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.date         = "2015-12-16"
   s.summary      = "A simple client that talks to the Adyen API"
   s.description  = "Does not try to be smart, stays close to the documentation while adhering to ruby conventions."

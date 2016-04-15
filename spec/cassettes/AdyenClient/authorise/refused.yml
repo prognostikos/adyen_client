@@ -5,7 +5,7 @@ http_interactions:
     uri: https://ws_574277%40Company.OpenSource:Q%29%256IpQdZiqU5tb3A1cw47e%3E%25@pal-test.adyen.com/pal/servlet/Payment/v12/authorise
     body:
       encoding: UTF-8
-      string: '{"reference":"22a57079-7ce7-4d78-be49-9fd1a07a152d","amount":{"value":123,"currency":"EUR"},"merchantAccount":"OpenSourceCOM","additionalData":{"card.encrypted.json":"adyenjs_0_1_15$P72PfRV1kT0p/yvtEuOrDTr6bCgEK2DJFNLEeW9B0cW9XRPzW9kUv9zL+oZAKTQ5/mZ+DmV26+YIlS7u2OkMPFxx7r/0HBJS8r35hA9F9UgnjbU/EvUKByvii4YEQuksVvq8o4tDv/Cu/WlrVKg2SkE0Do4Kz5QeNvoDsPlR6D3241fsae1DrjfXV/JRKfr8XfhfnS5SGsNpVcWuBNVzBsgJqblmuPEX7QdnoJiRmLXCVJch0iUAN+dlpQYYBiKv2sqmblIzI/NAVxsl/VCDSWQTUIbLguUzdFUkdA+ilME3LXnK5A44iOrx0sLX0deZNsRv11dDlKqGl4ig7RKPtw==$vYi0R3R+BJchqcApxd9LioLYWT199urvgAhs9wWGweCyLs+pgmuwoU0ozK3gV0jY5MmaNWW+WL2aZvw6qFLZeSwNL6jK6nLCoaYYqQ3Sp+i1hv9Yjbk40NQxq6Riq3rD+kYPDLI6hIp0rsR9paGMmaKlyW9K8/1l5t1BmeARsXbMz7gpw0qd+cqPkLVdxozCETvTudRpWxBPJHw6AT1ofZVo1UVyKAjdsdzOnT8zOX6lF16PnRmVw8ItVz4v1DhO7Jo2IhUWoI1q3mHvtYdLloCPI3ArZnLXNNjf95PSIYe7QNlPcVAzoj1WNkrvcVpji922o25eZW16N93xkOHJU7efkeXwOJj72S0DWIhcwt5DAauBXgbc/YMlR0AOdzQiy8TsCmNb8Q=="}}'
+      string: '{"reference":"3161ca43-6a0f-481a-92a4-40478373406a","amount":{"value":123,"currency":"EUR"},"merchantAccount":"OpenSourceCOM","additionalData":{"card.encrypted.json":"adyenjs_0_1_15$lY7ZOXDCOw9oVuWTlGfuKdped5Hpf3nC/Lop79mZJ1VJqbx1Bl2+tf/BD1A2E0lled4NDpvZwpPfy9nux1MOZncgH4LP1aiWwYg1VcWBUBm1k1tN3gx7ZLUqDkuXHOyYfculgx1h/9R9hzwu4CQsMycLnnbjlWSAvGUchaZ4Ii6pmgTITvEzPK1N4vEaezRX9nSKKWbcTfA2jiDrqhPVvgr/aG4/e74TdVxcL4aWdeQFTLjQTeUB3fCn/SkJbKfwKlpC80IDGD9xrw2nWV6I+wB+bZ6vmSt2qoupTzeh9IbTOgFPtYboNjZFKaTL19tGf8UMagvR+o6FCmSVgsQSMQ==$/dSz2IDqi7XkEkYCktRZuUDZV51dbpOuyqXTNDDxUjBKYzKAm0knujDTxPVIoMhoRNJuN0jdeBUCLhl2R2J1kED1z9grgYJZqRoDUjaBJ33g1YP8Go8pi7rOBzOVkX1+TnH5/5CdB8S6kRH9bjOQRRMbfgOhyAFmIqQ6lF8WiLamYjLY59wwaHq0+QYQVkBjKHaYjW6pPGr97iEnayOg72oeMnuDj59yKXZf2/sovtXKu4S7t5pEVwP+G19vwoERbaEXKd+j7aWIPVXbjS1Xs0Sn7/c3B/X5HclNOioeddJ+RJbiRos3yC3eLBlxe/PVgW//v0wsB4TbpPwVYyvWjRTetvyQ8tKFiVfayMckOFGd+ws9gRQPSjqlxVStl5n40yO1e2UP4g=="},"shopperEmail":null,"shopperIP":null,"shopperReference":null,"shopperStatement":""}'
     headers:
       Content-Type:
       - application/json; charset=utf-8
@@ -15,21 +15,20 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 23 Dec 2015 10:06:11 GMT
+      - Fri, 15 Apr 2016 09:26:26 GMT
       Server:
       - Apache
       Set-Cookie:
-      - JSESSIONID=8D11653EF715AFABFCBCF304E1E95D65.test103e; Path=/pal/; Secure;
-        HttpOnly
+      - JSESSIONID=0D3E0EE8EB5013D48524FCDC4FC6CBE0.test3e; Path=/pal/; Secure; HttpOnly
       Pspreference:
-      - '8814508651717433'
+      - '8514607123864386'
       Content-Length:
       - '89'
       Content-Type:
       - application/json;charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"pspReference":"8814508651717433","refusalReason":"CVC Declined","resultCode":"Refused"}'
+      string: '{"pspReference":"8514607123864386","refusalReason":"CVC Declined","resultCode":"Refused"}'
     http_version: 
-  recorded_at: Wed, 23 Dec 2015 10:06:10 GMT
+  recorded_at: Fri, 15 Apr 2016 09:26:27 GMT
 recorded_with: VCR 3.0.0
