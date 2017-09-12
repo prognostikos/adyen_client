@@ -1,11 +1,13 @@
 class AdyenClient::Configuration
   BASE_URI = "https://pal-%s.adyen.com/pal/servlet"
+
   attr_accessor :environment
   attr_accessor :username
   attr_accessor :password
   attr_accessor :cse_public_key
   attr_accessor :default_merchant_account
   attr_accessor :default_currency
+  attr_accessor :api_version
 
   def set(hash)
     hash.each { |k, v| send("#{k}=", v) if respond_to?("#{k}=") }

@@ -4,6 +4,8 @@ require "httparty"
 #
 # Use an instance to configure for the situation and talk to the API.
 class AdyenClient
+  DEFAULT_API_VERSION = 'v12'
+
   include HTTParty
 
   # Internal: Access the configuration instance.
@@ -26,6 +28,7 @@ class AdyenClient
   #     c.cse_public_key = "10001|..."
   #     c.default_merchant_account = "FooBar123"
   #     c.default_currency = "EUR"
+  #     c.api_version = "v25"
   #   end
   #
   #   # Hash style works too, string or symbol keys
@@ -68,10 +71,11 @@ class AdyenClient
   # :response_class   - Use a custom class for handling responses from Adyen. (optional)
   #
   # Returns an AdyenClient::Response or your specific response implementation.
-  def initialize(merchant_account: configuration.default_merchant_account, currency: configuration.default_currency, response_class: Response)
+  def initialize(merchant_account: configuration.default_merchant_account, currency: configuration.default_currency, response_class: Response, api_version: configuration.api_version)
     @merchant_account = merchant_account
     @currency = currency
     @response_class = response_class
+    @api_version = api_version || DEFAULT_API_VERSION
   end
 
   # Public: Charge a user by referencing his stored payment method.
@@ -87,7 +91,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def authorise_recurring_payment(reference:, shopper_reference:, amount:, recurring_reference: "LATEST", merchant_account: @merchant_account, currency: configuration.default_currency, statement: "")
-    postJSON("/Payment/v12/authorise",
+    postJSON("/Payment/#{@api_version}/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },
       merchantAccount: merchant_account,
@@ -109,7 +113,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def list_recurring_details(shopper_reference:, merchant_account: @merchant_account, contract: "RECURRING")
-    postJSON("/Recurring/v12/listRecurringDetails",
+    postJSON("/Recurring/#{@api_version}/listRecurringDetails",
       shopperReference: shopper_reference,
       recurring: { contract: contract },
       merchantAccount: merchant_account
@@ -132,7 +136,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def create_recurring_contract(encrypted_card:, reference:, shopper:, merchant_account: @merchant_account, currency: @currency)
-    postJSON("/Payment/v12/authorise",
+    postJSON("/Payment/#{@api_version}/authorise",
       reference: reference,
       additionalData: { "card.encrypted.json": encrypted_card },
       amount: { value: 0, currency: currency },
@@ -162,7 +166,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def authorise(encrypted_card:, amount:, reference:, merchant_account: @merchant_account, currency: @currency, shopper: {}, statement: "")
-    postJSON("/Payment/v12/authorise",
+    postJSON("/Payment/#{@api_version}/authorise",
       reference: reference,
       amount: { value: amount, currency: currency },
       merchantAccount: merchant_account,
@@ -193,7 +197,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def verify(encrypted_card:, reference:, amount: 0, merchant_account: @merchant_account, currency: @currency, shopper: {}, statement: "")
-    postJSON("/Payment/v12/authorise",
+    postJSON("/Payment/#{@api_version}/authorise",
       reference: reference,
       amount: { value: 0, currency: currency },
       additionalAmount: { value: amount, currency: currency },
@@ -214,7 +218,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def cancel(original_reference:, reference:, merchantAccount: @merchant_account)
-    postJSON("/Payment/v12/cancel",
+    postJSON("/Payment/#{@api_version}/cancel",
       reference: reference,
       merchantAccount: merchant_account,
       originalReference: original_reference
@@ -231,7 +235,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def refund(original_reference:, amount:, reference:, merchantAccount: @merchant_account, currency: @currency)
-    postJSON("/Payment/v12/refund",
+    postJSON("/Payment/#{@api_version}/refund",
       reference: reference,
       merchantAccount: merchant_account,
       modificationAmount: { value: amount, currency: currency },
@@ -247,7 +251,7 @@ class AdyenClient
   #
   # Returns an AdyenClient::Response or your specific response implementation.
   def cancel_or_refund(original_reference:, reference:, merchantAccount: @merchant_account)
-    postJSON("/Payment/v12/cancelOrRefund",
+    postJSON("/Payment/#{@api_version}/cancelOrRefund",
       reference: reference,
       merchantAccount: merchant_account,
       originalReference: original_reference
